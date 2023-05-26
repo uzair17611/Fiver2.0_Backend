@@ -4,86 +4,39 @@ import mongoose from "mongoose"
 
 const conversationSchema = new  Schema({
 
-    userid:{
+    id:{
 
         type:String,
         required:true,
-       
+       unique:true
     },
     
-    desc:{
+    sellerid:{
 
         type:String,
         required:true,
-     
+       unique:true
     },
-    
-    totalstar:{
-
-        type:Number,
-        default:0
-
-    },
-       
-    
-   starNumber:{
-
-        type:Number,
-        default:0
-       
-    },
-    
-    cat:{
-
+    buyerid:{
         type:String,
-        required:true
-   
+        required:true,
+       unique:true
     },
-    price:{
-
+    
+    readbyseller:{
         type:Boolean,
-        required:true
-    },
-    
-    cover:{
+       required:true
 
+    },
+    readbybuyer:{
+        type:Boolean,
+       required:true
+
+    },
+    lastmessege:{
         type:String,
-        required:false,
-        
-    },
-    images:{
+       required:false
 
-        type:[String],
-        required:false,
-        
-    },
-    shortTitle:{
-
-        type:String,
-        required:true
-        
-    },
-    shortDesc:{
-
-        type:String,
-        required:true
-        
-    },
-    DeliveryTime:{
-        type:Number,
-        required:true
-    },
-    revisionNumber:{
-        type:Number,
-        required:true
-    },
-    features:{
-        type:[String],
-        required:false
-    },
-    sales:{
-        type:Number,
-        required: 0
     },
 
 },

@@ -1,33 +1,31 @@
-import express from 'express'
-import mongoose from "mongoose"
-import dotenv from "dotenv"
+import express from 'express';
+import userRoute from "./Routes/user.route.js"
+import mongoose from  'mongoose'
+
+import dontenv from "dotenv"
 
 
-dotenv.config()
+dontenv.config()
+const  app =express()
 
-const  app=express();
-const connect = async()=>{
-  try {
-    await mongoose.connect(process.env.MONGO_URI);
-      console.log("connected to mongoose")
-  
-  } catch (error) {
-    handleError(error);
-  }
+
+const connect = async ()=>{
+
+try {
+  await mongoose.connect(process.env.Mongo_URI);
+  console.log("connected to database")
+} catch (error) {
+  console.log(error);
+}
+    
 }
 
 
+app.use("/api/users"  ,userRoute)
 
 
 
-
-
-
-
-
-
-
-app.listen(5000, ()=>{
-  connect()
-    console.log("server is listening on port 5000")
+app.listen(8800, ()=>{
+    connect()
+    console.log("this app is listening on port 8800")
 })
