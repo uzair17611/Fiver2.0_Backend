@@ -1,6 +1,10 @@
 import express from 'express';
 import userRoute from "./Routes/user.route.js"
 import mongoose from  'mongoose'
+import gigRoute from "./Routes/gig.route.js"
+import messageRoute from "./Routes/message.route.js"
+import conversationRoute from "./Routes/conversation.route.js"
+import ReviewRoute from "./Routes/review.route.js"
 
 import dontenv from "dotenv"
 
@@ -22,6 +26,11 @@ try {
 
 
 app.use("/api/users"  ,userRoute)
+app.use("/api/users"  ,conversationRoute)
+app.use("/api/users"  ,gigRoute)
+app.use("/api/users"  ,messageRoute)
+app.use("/api/users"  ,ReviewRoute)
+
 
 
 
