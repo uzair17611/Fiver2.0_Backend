@@ -7,6 +7,8 @@ import conversationRoute from "./Routes/conversation.route.js"
 import ReviewRoute from "./Routes/review.route.js"
 import authRoute from "./Routes/auth.route.js"
 import dontenv from "dotenv"
+import cookieParser from "cookie-parser"
+import cors from "cors"
 
 
 dontenv.config()
@@ -14,6 +16,9 @@ const  app =express()
  
 
 app.use(express.json())
+app.use(cookieParser())
+app.use(cors());
+// app.use(cors({origin:"http://localhost:5173",  credential:true}))
 
 const connect = async ()=>{
 
@@ -33,6 +38,13 @@ app.use("/api/conversation"  ,conversationRoute)
 app.use("/api/gigs"  ,gigRoute)
 app.use("/api/message"  ,messageRoute)
 app.use("/api/reviews"  ,ReviewRoute)
+app.use((err,req,res,next) =>{
+
+let   errorStatus =err.status || 500 ;
+let   errorMessage =err.message || "something went wrong"
+
+    return res.status(errorStatus ).send( errorMessage);
+})
 
 
 
