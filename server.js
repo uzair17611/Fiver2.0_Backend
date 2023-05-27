@@ -5,13 +5,15 @@ import gigRoute from "./Routes/gig.route.js"
 import messageRoute from "./Routes/message.route.js"
 import conversationRoute from "./Routes/conversation.route.js"
 import ReviewRoute from "./Routes/review.route.js"
-
+import authRoute from "./Routes/auth.route.js"
 import dontenv from "dotenv"
 
 
 dontenv.config()
 const  app =express()
+ 
 
+app.use(express.json())
 
 const connect = async ()=>{
 
@@ -26,10 +28,11 @@ try {
 
 
 app.use("/api/users"  ,userRoute)
-app.use("/api/users"  ,conversationRoute)
-app.use("/api/users"  ,gigRoute)
-app.use("/api/users"  ,messageRoute)
-app.use("/api/users"  ,ReviewRoute)
+app.use("/api/auth"  ,authRoute)
+app.use("/api/conversation"  ,conversationRoute)
+app.use("/api/gigs"  ,gigRoute)
+app.use("/api/message"  ,messageRoute)
+app.use("/api/reviews"  ,ReviewRoute)
 
 
 
