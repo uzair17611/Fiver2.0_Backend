@@ -50,10 +50,10 @@ export const login = async(req,res ,next)=>{
 
         },process.env.jwt_secret)
         const { password, ...info } = foundUser._doc;
-        res.cookie("accessToken" ,token,{
-        httpOnly:true
-      })
-        .status(200).send(info);
+        res.cookie("accessToken", token, {
+          httpOnly: true,
+        });
+        return res.status(200).send(info);
       } catch (error) {
         // Handle the error appropriately
         console.log(error);
